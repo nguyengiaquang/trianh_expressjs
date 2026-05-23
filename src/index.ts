@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import express, { type Request, type Response } from 'express';
-import webRouter from "./routers/web.router.ts"
+import webRouter from "./routers/web.router.ts";
+import apiRouter from "./routers/api.router.ts";
 import dotenv from "dotenv";
 import AppDataSource from "./database/datasource.ts";
 import bodyParser from "body-parser";
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", webRouter)
+app.use("/api", apiRouter)
 
 AppDataSource.initialize().then(() => {
   console.log("Database connected");

@@ -11,16 +11,11 @@ class UserService {
     }
 
     async delete(id: any) {
-        try {
-            const userDelete = await this.userRepository.findById(id);
-            if(!userDelete) {
-                throw new Error("User not found");
-            }
-            return await this.userRepository.delete(userDelete);
-        } catch (error) {
-            console.log(error);
-            return error;
+        const userDelete = await this.userRepository.findById(id);
+        if (!userDelete) {
+            throw new Error("User not found");
         }
+        return await this.userRepository.delete(userDelete);
     }
 }
 
