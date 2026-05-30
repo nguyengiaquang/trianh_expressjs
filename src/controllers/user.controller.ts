@@ -28,8 +28,8 @@ class UserController {
 
     async store(req: Request, res: Response) {
         const data = req.body;
-        console.log(data);
-        //await this.userService.create(data);
+    
+        await this.userService.create(data);
         res.redirect('/users');
     }
 }
